@@ -19,24 +19,26 @@ fn calc_fuel(f: f32) -> f32 {
     while !done {
         let next_fuel: f32 = (cur_fuel/3.0).trunc() - 2.0;
         cur_fuel = next_fuel;
-        println!("here");
         if next_fuel > 0.0 {
-            println!("there");
             total_fuel += next_fuel;
         } else {
-            println!("done");
             done = true;
         }
     }
     total_fuel
 }
 
-fn main() {
-    println!("{:?}", std::env::current_dir());
-    let input: f32 = lines_from_file("./res/day-1.txt")
+fn day_one(path: &str) -> f32 {
+    lines_from_file(path)
         .iter()
         .map(|x| x.parse::<f32>().unwrap())
         .map(|x| calc_fuel(x) )
-        .sum();
-    println!("{}", input);
+        .sum()
+
+}
+
+fn main() {
+    println!("{:?}", std::env::current_dir());
+    let solution: f32 = day_one("./res/day-1.txt");
+    println!("{}", solution);
 }
