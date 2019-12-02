@@ -36,7 +36,7 @@ fn exec_program(program: &mut Vec<usize>) -> usize {
     program[0]
 }
 
-pub fn day_two(path: String) {
+pub fn day_two(path: String) -> usize {
     let program: Vec<usize> = util::split_lines_from_file(path)
         .iter()
         .map(|x| x.parse::<usize>().unwrap())
@@ -46,20 +46,23 @@ pub fn day_two(path: String) {
     // let mut program = program.clone();
     // program[1] = 12;
     // program[2] = 2;
+    // let solution = exec_program(&mut program);
+    // solution
 
     // part 2
+    let mut solution = 0;
     for noun in 1..99 {
         for verb in 1..99 {
             let mut program = program.clone();
             program[1] = noun;
             program[2] = verb;
 
-            let solution = exec_program(&mut program);
+            let program_output = exec_program(&mut program);
 
-            if solution == 19690720 {
-                let code = 100 * noun + verb;
-                println!("Solution: {}", code);
+            if program_output == 19690720 {
+                solution = 100 * noun + verb;
             }
         }
     }
+    solution
 }
