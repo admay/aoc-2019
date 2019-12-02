@@ -5,5 +5,5 @@ authors = ["Michael Zavarella <mzavarella30@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-hyper = "0.12"
-structopt = "0.3.3"
+aoc-runner = ""
+aoc-runner-derive = ""

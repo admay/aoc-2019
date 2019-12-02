@@ -1,9 +1,3 @@
-// mod one;
-mod two;
-mod util;
+use aoc_runner_derive::aoc_main;
 
-fn main() {
-    let path: String = format!("./res/day-2.txt");
-    let solution = two::day_two(path);
-    println!("{:?}", solution);
-}
+aoc_main! { lib = aoc }
