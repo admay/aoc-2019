@@ -1,8 +1,9 @@
 [package]
-name = "aoc-2019"
+name = "aoc"
 version = "0.1.0"
 authors = ["Michael Zavarella <mzavarella30@gmail.com>"]
 edition = "2018"
 
 [dependencies]
 hyper = "0.12"
+structopt = "0.3.3"
