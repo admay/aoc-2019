@@ -1,0 +1,13 @@
+My solutions to Advent of Code 2019
+-----------------------------------
+
+I usually burn out on these kinds of things pretty quickly.
+I'm using this to try to learn more about Rust though.
+Specifically, I'd like to get more comfortable working with
+the Rust type system and ownership model. I've heard it has
+a pretty steep learning curve, and that's proving to be true
+so far. So did Clojure though, and I managed to make that work.
+
+Advent of Code: https://adventofcode.com/
+AoC Runner: https://github.com/gobanos/cargo-aoc
+Rust Language: https://www.rust-lang.org/
