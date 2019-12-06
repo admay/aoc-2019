@@ -44,7 +44,7 @@ impl TestComputer {
 
     fn get_param_2(&mut self, op_code: i32) -> (Parameter, Parameter) {
         let p1 = self.get_param_1(op_code);
-        let p2 = self._get_parameter((op_code / 10)% 10);
+        let p2 = self._get_parameter((op_code / 10) % 10);
         (p1, p2)
     }
 
@@ -70,11 +70,9 @@ impl TestComputer {
         }
     }
 
-
     fn emit_output(&mut self, param: Parameter) {
         self.output = Some(self.unwrap(param));
     }
-
 
     fn jump(&mut self, param: Parameter) {
         self.instruction_pointer = self.unwrap(param) as usize;
@@ -151,10 +149,8 @@ impl TestComputer {
 fn parse_input(input: &str) -> Vec<i32> {
     input
         .split(",")
-        .filter_map(|x| {
-            x.parse::<i32>().ok()
-        })
-    .collect()
+        .filter_map(|x| x.parse::<i32>().ok())
+        .collect()
 }
 
 #[aoc(day5, part1)]
@@ -165,9 +161,7 @@ fn solve_p1(input: &Vec<i32>) -> Option<i32> {
         output: None,
         instruction_pointer: 0,
     };
-    computer
-        .run()
-        .output
+    computer.run().output
 }
 
 #[aoc(day5, part2)]
@@ -178,7 +172,5 @@ fn solve_p2(input: &Vec<i32>) -> Option<i32> {
         output: None,
         instruction_pointer: 0,
     };
-    computer
-        .run()
-        .output
+    computer.run().output
 }

@@ -16,7 +16,7 @@ pub enum Orientation {
 #[derive(Debug)]
 pub struct Instruction {
     direction: Direction,
-    distance: i64
+    distance: i64,
 }
 
 pub type Point = (i64, i64);
@@ -28,8 +28,7 @@ pub fn parse_input(input: &str) -> Vec<Vec<Instruction>> {
     input
         .lines()
         .map(|line| {
-            line
-                .split(",")
+            line.split(",")
                 .map(|i| Instruction {
                     direction: match i.chars().next().unwrap() {
                         'U' => Direction::UP,
@@ -40,7 +39,7 @@ pub fn parse_input(input: &str) -> Vec<Vec<Instruction>> {
                     },
                     distance: i[1..].parse().unwrap(),
                 })
-            .collect()
+                .collect()
         })
         .collect()
 }
@@ -86,8 +85,7 @@ fn find_intersection(p0: &Point, p1: &Point, p2: &Point, p3: &Point) -> Option<P
         let ix = (p0_x + (t * s1_x)) as i64;
         let iy = (p0_y + (t * s1_y)) as i64;
         Some((ix, iy))
-    }
-    else {
+    } else {
         None
     }
 }
@@ -103,9 +101,8 @@ fn find_intersections(path_1: Vec<Point>, path_2: Vec<Point>) -> Vec<(u64, Point
             steps_b += manhattan_distance(p2, p3);
             if let Some(o) = find_intersection(p0, p1, p2, p3) {
                 if o != (0, 0) {
-                    let dist = steps_a + steps_b
-                        - manhattan_distance(p1, &o)
-                        - manhattan_distance(p3, &o);
+                    let dist =
+                        steps_a + steps_b - manhattan_distance(p1, &o) - manhattan_distance(p3, &o);
                     intersections.push((dist, o));
                 }
             }
@@ -126,11 +123,7 @@ pub fn solve_p1(input: &Vec<Vec<Instruction>>) -> u64 {
     let intersections = find_intersections(wire_1, wire_2);
     let closest_intersect = intersections
         .iter()
-        .min_by(|p, q| {
-            manhattan_distance(
-                &(0, 0), &p.1)
-                .cmp(&manhattan_distance(&(0, 0), &q.1))
-        })
+        .min_by(|p, q| manhattan_distance(&(0, 0), &p.1).cmp(&manhattan_distance(&(0, 0), &q.1)))
         .unwrap();
 
     manhattan_distance(&(0, 0), &closest_intersect.1)
@@ -142,10 +135,7 @@ pub fn solve_p2(input: &Vec<Vec<Instruction>>) -> u64 {
     let wire_2 = gen_path(&input[1]);
 
     let intersections = find_intersections(wire_1, wire_2);
-    let closest_intersect = intersections
-        .iter()
-        .min_by_key(|(dist, _)| dist)
-        .unwrap();
+    let closest_intersect = intersections.iter().min_by_key(|(dist, _)| dist).unwrap();
 
     closest_intersect.0
 }

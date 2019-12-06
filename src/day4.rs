@@ -1,18 +1,15 @@
-use std::{
-    ops::Range,
-};
+use std::ops::Range;
 
 #[aoc_generator(day4)]
 fn parse_input(input: &str) -> Range<usize> {
     let r: Vec<usize> = input
         .split("-")
-        .map(|x| {
-            x.to_string()
-                .parse::<usize>()
-                .unwrap()
-        })
+        .map(|x| x.to_string().parse::<usize>().unwrap())
         .collect();
-    Range { start: r[0], end: r[1] }
+    Range {
+        start: r[0],
+        end: r[1],
+    }
 }
 
 fn always_increasing(s: &str) -> bool {
@@ -24,7 +21,7 @@ fn always_increasing(s: &str) -> bool {
             last_max = x;
         }
     }
-    return true
+    return true;
 }
 
 fn has_tuplets(s: &str) -> bool {
