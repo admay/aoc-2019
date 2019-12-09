@@ -145,7 +145,7 @@ impl TestComputer {
     }
 }
 
-#[aoc_generator(day5)]
+#[aoc_generator(day7)]
 fn parse_input(input: &str) -> Vec<i32> {
     input
         .split(",")
@@ -153,24 +153,14 @@ fn parse_input(input: &str) -> Vec<i32> {
         .collect()
 }
 
-#[aoc(day5, part1)]
-fn solve_p1(input: &Vec<i32>) -> Option<i32> {
-    let mut computer = TestComputer {
-        memory: input.clone(),
-        input: vec![1],
-        output: None,
-        instruction_pointer: 0,
-    };
-    computer.run().output
+#[aoc(day7, part1)]
+fn solve_p1(instructions: &Vec<i32>) -> Option<i32> {
+    println!("Input: {:?}", instructions);
+    Some(0)
 }
 
-#[aoc(day5, part2)]
-fn solve_p2(input: &Vec<i32>) -> Option<i32> {
-    let mut computer = TestComputer {
-        memory: input.clone(),
-        input: vec![5],
-        output: None,
-        instruction_pointer: 0,
-    };
-    computer.run().output
+#[aoc(day7, part2)]
+fn solve_p2(instructions: &Vec<i32>) -> Option<i32> {
+    println!("Input: {:?}", instructions);
+    Some(0)
 }
