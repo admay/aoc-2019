@@ -82,17 +82,6 @@ impl IntCodeComputer {
         }
     }
 
-    fn load_memory(&mut self, mem: Vec<i64>) -> &mut Self {
-        self.memory = mem;
-        self.instruction_pointer = 0;
-        self
-    }
-
-    fn set_input(&mut self, ip: usize) -> &mut Self {
-        self.instruction_pointer = ip;
-        self
-    }
-
     fn get_word(&mut self) -> i64 {
         let word = self.memory[self.instruction_pointer];
         self.instruction_pointer += 1;
