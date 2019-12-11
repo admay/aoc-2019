@@ -3,7 +3,7 @@ pub fn permutations(start: usize, end: usize) -> Permutations {
     Permutations {
         idxs: (start..=end).collect(),
         swaps: vec![0; end - start + 1],
-        i: 0
+        i: 0,
     }
 }
 
@@ -19,7 +19,6 @@ impl Iterator for Permutations {
     fn next(&mut self) -> Option<Self::Item> {
         if self.i > 0 {
             loop {
-
                 if self.i >= self.swaps.len() {
                     return None;
                 }
@@ -174,13 +173,13 @@ impl IntCodeComputer {
                 let op2 = self.unwrap(p_2);
                 self.store_val(p_3, op1 + op2);
                 return Signal::None;
-            },
+            }
             Instruction::Mul((p_1, p_2, p_3)) => {
                 let op1 = self.unwrap(p_1);
                 let op2 = self.unwrap(p_2);
                 self.store_val(p_3, op1 * op2);
                 return Signal::None;
-            },
+            }
             Instruction::Input(p_) => {
                 if self.input.is_empty() {
                     return Signal::NeedsInput;
@@ -188,35 +187,35 @@ impl IntCodeComputer {
                 let inp = self.input.remove(0);
                 self.store_val(p_, inp);
                 return Signal::None;
-            },
+            }
             Instruction::Output(p_) => {
                 self.emit_output(p_);
                 return Signal::ProducedOutput;
-            },
+            }
             Instruction::JumpIfTrue((p_1, p_2)) => {
                 if self.unwrap(p_1) != 0 {
                     self.jump(p_2);
                 }
                 return Signal::None;
-            },
+            }
             Instruction::JumpIfFalse((p_1, p_2)) => {
                 if self.unwrap(p_1) == 0 {
                     self.jump(p_2);
                 }
                 return Signal::None;
-            },
+            }
             Instruction::LessThan((p_1, p_2, p_3)) => {
                 let op1 = self.unwrap(p_1);
                 let op2 = self.unwrap(p_2);
                 self.store_val(p_3, if op1 < op2 { 1 } else { 0 });
                 return Signal::None;
-            },
+            }
             Instruction::Equals((p_1, p_2, p_3)) => {
                 let op1 = self.unwrap(p_1);
                 let op2 = self.unwrap(p_2);
                 self.store_val(p_3, if op1 == op2 { 1 } else { 0 });
                 return Signal::None;
-            },
+            }
             Instruction::Halt => return Signal::Halt,
         }
     }

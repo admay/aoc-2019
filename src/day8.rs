@@ -37,7 +37,7 @@ impl Layer {
                     '0' => z += 1,
                     '1' => o += 1,
                     '2' => t += 1,
-                    _ => {},
+                    _ => {}
                 }
             }
         }
@@ -52,7 +52,7 @@ impl Display for Layer {
                 match c {
                     '0' => write!(f, "{}", ' ')?,
                     '1' => write!(f, "{}", '*')?,
-                    _ => {},
+                    _ => {}
                 }
             }
             write!(f, "{}", "\n")?;
@@ -76,7 +76,7 @@ impl Image {
         Image { layers: layers }
     }
 
-    fn layers(&self) -> impl Iterator<Item = &Layer>{
+    fn layers(&self) -> impl Iterator<Item = &Layer> {
         self.layers.iter()
     }
 
@@ -106,10 +106,7 @@ impl Image {
 
 #[aoc_generator(day8)]
 fn parse_input(input: &str) -> Image {
-    let x: Vec<char> = input
-        .chars()
-        .collect();
-    Image::new(&x, LAYER_WIDTH, LAYER_HEIGHT)
+    Image::new(&input.chars().collect(), LAYER_WIDTH, LAYER_HEIGHT)
 }
 
 #[aoc(day8, part1)]
@@ -127,7 +124,7 @@ fn solve_p1(img: &Image) -> u32 {
 }
 
 #[aoc(day8, part2)]
-fn solve_p2(img: &Image) -> u32{
+fn solve_p2(img: &Image) -> u32 {
     let visible_layer: Layer = img.flatten();
     println!("{}", visible_layer);
     0

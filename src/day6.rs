@@ -5,11 +5,11 @@ fn parse_input_p1(input: &str) -> HashMap<String, Vec<String>> {
     let mut orbits: HashMap<String, Vec<String>> = HashMap::new();
 
     input.trim().split("\n").for_each(|line| {
-            let mut objs = line.trim().split(")");
-            let parent = objs.next().unwrap().to_string();
-            let child = objs.next().unwrap().to_string();
-            orbits.entry(parent).or_default().push(child);
-        });
+        let mut objs = line.trim().split(")");
+        let parent = objs.next().unwrap().to_string();
+        let child = objs.next().unwrap().to_string();
+        orbits.entry(parent).or_default().push(child);
+    });
 
     orbits
 }
@@ -54,7 +54,6 @@ fn first_common_element(from: Vec<String>, to: Vec<String>) -> Option<(usize, us
     for (i, f) in from.iter().enumerate() {
         if let Some(j) = hm.get(f) {
             return Some((i, *j));
-
         }
     }
     None
